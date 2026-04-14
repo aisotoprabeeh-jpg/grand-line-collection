@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grand Line Collection - E-Commerce Platform</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Theme Logic FOUC Prevention -->
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-main" style="position: relative;">
+      <div class="header-left">
+        <!-- Placeholder for symmetry -->
+      </div>
+      
+      <a href="index.html" class="logo" style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.8rem;">
+        Grand Line<span>Collection</span>
+      </a>
+      
+      <div class="header-actions">
+        <div class="action-item">
+          <span class="action-label">Hello, sign in</span>
+          <span class="action-text">Account & Lists</span>
+        </div>
+        <div class="action-item">
+          <span class="action-label">Returns</span>
+          <span class="action-text">& Orders</span>
+        </div>
+        <a href="cart.html" class="action-item cart-icon-wrapper">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+          <span class="action-text" style="margin-left: 4px;">Cart</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="header-search-row">
+      <div class="container" style="padding-top: 0; padding-bottom: 1rem;">
+        <form class="search-bar" id="search-form" style="margin: 0 auto; width: 100%; max-width: 800px;">
+          <select class="search-select">
+            <option>All Departments</option>
+            <option>Game</option>
+            <option>Sport</option>
+            <option>Phones</option>
+            <option>Food</option>
+          </select>
+          <input type="text" id="search-input" class="search-input" placeholder="Search products, brands and more...">
+          <button type="submit" class="search-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <nav class="header-nav">
+      <div class="nav-links">
+        <a href="#">☰ All</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Customer Service</a>
+        <a href="#">Registry</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Sell</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <img src="images/one_piece_hero_banner_1776143609359.png" alt="One Piece Background Banner" class="hero-img">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 10; width: 100%;">
+      <h1 style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">Grand Line Collection</h1>
+      <p style="font-size: clamp(1rem, 2vw, 1.5rem); margin-top: 1rem; font-weight: 500; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); color: var(--accent-color);">Discover Premium Treasures</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Recommended Categories -->
+    <div class="category-grid">
+      <div class="card">
+        <h2 class="card-title">Pirate Adventures</h2>
+        <img src="images/one_piece_gaming_1776143630363.png" alt="Pirate Adventures" class="category-img">
+        <a href="#" style="color: var(--action-color); font-weight: 500; font-size: 0.85rem;">Join the crew</a>
+      </div>
+      <div class="card">
+        <h2 class="card-title">Grand Line Training</h2>
+        <img src="images/one_piece_sports_1776143646570.png" alt="Grand Line Training" class="category-img">
+        <a href="#" style="color: var(--action-color); font-weight: 500; font-size: 0.85rem;">Get stronger</a>
+      </div>
+      <div class="card">
+        <h2 class="card-title">Den Den Mushi Tech</h2>
+        <img src="images/one_piece_tech_1776143688257.png" alt="Den Den Mushi Tech" class="category-img">
+        <a href="#" style="color: var(--action-color); font-weight: 500; font-size: 0.85rem;">Upgrade your gear</a>
+      </div>
+      <div class="card">
+        <h2 class="card-title">Sanji's Gourmet Baratie</h2>
+        <img src="images/one_piece_food_1776143661193.png" alt="Sanji's Gourmet" class="category-img">
+        <a href="#" style="color: var(--action-color); font-weight: 500; font-size: 0.85rem;">Taste the best</a>
+      </div>
+    </div>
+
+    <!-- Dynamic Product Grid -->
+    <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">Recommended for you</h2>
+    <div class="product-grid" id="product-grid">
+      <!-- Products are injected here by main.js -->
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="#" class="back-to-top">Back to top</a>
+    <div class="container" style="display: flex; justify-content: center; padding: 2rem;">
+      <p style="text-align: center; color: #ccc; font-size: 0.85rem;">
+        &copy; 2026 Rabi Collection. For Educational Purposes.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

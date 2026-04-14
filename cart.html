@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Theme Logic FOUC Prevention -->
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <!-- Header Placeholder (Same as index.html) -->
+  <header class="site-header">
+    <div class="header-main">
+      <a href="index.html" class="logo">
+        rabi<span>collection</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container" style="display: flex; gap: 2rem; margin-top: 2rem;">
+    <!-- Cart Items -->
+    <div style="flex: 3; background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+      <h1 style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">Shopping Cart</h1>
+      <div id="cart-items">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Subtotal -->
+    <div style="flex: 1; background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); height: fit-content;">
+      <h2 style="font-size: 1.25rem;">Subtotal (<span id="cart-total-count">0</span> items): <br><span class="price">₹<span id="cart-total-price">0.00</span></span></h2>
+      <button class="btn-primary" onclick="checkout()" style="margin-top: 1rem;">Proceed to checkout</button>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart();
+    });
+
+    function renderCart() {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const cartContainer = document.getElementById('cart-items');
+      const totalCount = document.getElementById('cart-total-count');
+      const totalPrice = document.getElementById('cart-total-price');
+      
+      let total = 0;
+      
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your Rabi Collection Cart is empty.</p>';
+      } else {
+        cartContainer.innerHTML = cart.map((item, index) => {
+          total += item.price;
+          return `
+            <div style="display: flex; gap: 1.5rem; border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+              <img src="${item.image}" alt="${item.title}" style="width: 150px; height: 150px; object-fit: contain;">
+              <div>
+                <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #007185;">${item.title}</h3>
+                <p style="color: var(--success-color); font-size: 0.85rem; margin-bottom: 0.5rem;">In Stock</p>
+                <div class="price" style="font-size: 1.25rem; font-weight: 700; color: #B12704; margin-bottom: 1rem;">₹${item.price.toFixed(2)}</div>
+                <button onclick="removeFromCart(${index})" style="background: transparent; color: #007185; cursor: pointer; text-decoration: underline; font-size: 0.85rem;">Delete</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      totalCount.innerText = cart.length;
+      totalPrice.innerText = total.toFixed(2);
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+    }
+
+    function checkout() {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (cart.length === 0) {
+          alert("Your cart is already empty!");
+          return;
+        }
+
+        // Clear the cart
+        localStorage.setItem('cart', '[]');
+
+        // UI Updates for success
+        const cartContainer = document.getElementById('cart-items');
+        const totalCount = document.getElementById('cart-total-count');
+        const totalPrice = document.getElementById('cart-total-price');
+
+        cartContainer.innerHTML = `
+          <div style="text-align: center; padding: 3rem; background: var(--bg-main); border-radius: var(--radius-md); border: 2px solid var(--success-color);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+            <h2 style="color: var(--success-color); font-size: 2rem; margin-bottom: 0.5rem;">Order Successful!</h2>
+            <p>Thank you for shopping with Rabeeh Collection. Your order has been placed and will be shipped shortly.</p>
+          </div>
+        `;
+        
+        totalCount.innerText = "0";
+        totalPrice.innerText = "0.00";
+    }
+  </script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
